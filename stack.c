@@ -1,16 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define MAX 50 // you can alter th size of array by changing this
+#define MAX 100// you can alter th size of array by changing this
 
 int st[MAX],top = -1;  // initialising an array of size max and top = -1 i.e stack is empty
-void push(int st[],int value); // funtion declartion
+void push(int st[],int value); // funtion declaration
 int pop(int st[]);
 int peek(int st[]);
 void display(int st[]);
 
 int main()
 {
-int option,value; 
+int option,value; //value is given by user (selected option)
 do
 {
 	printf("\n----- MAIN MENU ----- ");
@@ -52,7 +52,7 @@ void push(int st[],int value) // defination of push funtion
 	} 
 	else 
 	{
-		top = top + 1;  // if our stack is not empty then we increment our top by one 
+		top ++;  // if our stack is not empty then we increment our top by one 
 		st[top] = value; // and storing the value at the top of our stack
 	} 
 		
@@ -67,6 +67,7 @@ int pop(int st[])  // defination of pop function
 	}
 	else 
 	{
+
 		value = st[top]; // if stack is not empty then we store the value at top in our variable value
 		top --;		 // and decrementing the top by 1
 		return value; 	// and returning this value
@@ -81,9 +82,14 @@ void display(int st[])  // defination of Display funtion
 		printf("\n stack is EMPTY");
 	}
 	else
-	{
-		for(i=top;i>=0;i--)  // this loop will print values as Last in First Out
-		printf("\n%d",st[i]); // i.e the value which is inserted last will be displayed first
+	{   i=top;
+		while(i>=0) {
+
+             printf("\n%d",st[i]);
+			 i--;
+
+		} // this loop will print values as Last in First Out
+		 // i.e the value which is inserted last will be displayed first
 	}
 
 }
@@ -96,7 +102,7 @@ int peek(int st[])  // defination of peek funtion
 	}
 	else                  // and if stack if not empty then
 	{
-		return(st[top]); // we return the element at top of our stack
+		return(st[top]); //  returns the element at top of our stack
 	}
 }
 
